@@ -29,7 +29,7 @@ function App() {
 
 
     try {
-      const response = await axios.post("https://practical-web-crud-3oa3.vercel.app/students", {
+      const response = await axios.post("http://localhost:5000/students", {
         name,
         course,
         age: Number(age)
@@ -46,7 +46,7 @@ function App() {
 
   async function handleDelete(id) {
     try {
-      await axios.delete(`https://practical-web-crud-3oa3.vercel.app//${id}`);
+      await axios.delete(`http://localhost:5000/students/${id}`);
       console.log("delete finished")
       setStudents((prev) => prev.filter((student) => student._id !== id));
     } catch (error) {
@@ -66,7 +66,7 @@ function App() {
   }
   async function handleUpdate(id) {
     try {
-      await axios.put(`https://practical-web-crud-3oa3.vercel.app/${id}`, {
+      await axios.put(`http://localhost:5000/students/${id}`, {
         name,
         course,
         age: Number(age)
@@ -91,7 +91,7 @@ function App() {
   useEffect(() => {
 
     axios
-      .get("https://practical-web-crud-3oa3.vercel.app/")
+      .get("http://localhost:5000/students")
       .then((response) => {
         console.log(response.data)
         setStudents(response.data)
